@@ -33,7 +33,7 @@ A minimal, open-source Bash toolchain to disable the stock setup assistant (`Set
 
 If your Mac does not have **Homebrew** installed, open your terminal and run the official setup string:
 ```bash
-/bin/bash -c "\$(curl -fsSL https://githubusercontent.com)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Once Homebrew is active, install the required `libimobiledevice` components and binary protocols by executing:
