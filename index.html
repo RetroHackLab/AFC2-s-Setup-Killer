@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>afc2-setup-killer | RetroHackLab</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --success-color: #238636;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        h1 { font-size: 2.2rem; }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        .badge {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: monospace;
+        }
+        .warning-box {
+            background-color: rgba(240, 185, 11, 0.1);
+            border: 1px solid #f0b90b;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .step-list {
+            padding-left: 0;
+            list-style: none;
+        }
+        .step-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .step-number {
+            background-color: var(--accent-color);
+            color: #000000;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        code {
+            font-family: monospace;
+            background-color: rgba(110, 118, 129, 0.2);
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        pre {
+            background-color: #010409;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #ff79c6;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8b949e;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📱 afc2-setup-killer</h1>
+        <p>A minimal, open-source Bash toolchain created by <span class="badge">RetroHackLab</span> to disable the stock setup assistant on legacy iOS devices using native AFC2 connections over USB.</p>
+    </header>
+
+    <section class="warning-box">
+        <strong>⚠️ Educational Purposes Only:</strong> This software is designed strictly for academic research and legacy device preservation. It does not bypass remote server-side activation locks. Use at your own risk.
+    </section>
+
+    <h2>📊 System Requirements</h2>
+    <ul>
+        <li><strong>Hardware:</strong> A5 to A9 Devices (iPhone, iPad, iPod Touch)</li>
+        <li><strong>Firmware:</strong> iOS 7.0 minimum up to iOS 9.3.4 <span class="badge">iOS 9.3.5 is NOT supported</span></li>
+        <li><strong>Prerequisite:</strong> Device must be jailbroken with Apple File Conduit "2" (AFC2) active.</li>
+    </ul>
+
+    <h2>🚀 Step-by-Step Bypass Instructions</h2>
+    <ul class="step-list">
+        <li class="step-item">
+            <span class="step-number">1</span> 
+            <strong>Install Host Tools:</strong> Open your local terminal (Linux or macOS) and ensure <code>libimobiledevice</code> utilities are active. You can run the built-in dependency check script:
+            <pre><code>./install_deps.sh</code></pre>
+        </li>
+        <li class="step-item">
+            <span class="step-number">2</span> 
+            <strong>Fix File Encodings:</strong> To prevent UNIX syntax execution errors caused by line-endings, force format compliance by running:
+            <pre><code>./fix_format.sh</code></pre>
+        </li>
+        <li class="step-item">
+            <span class="step-number">3</span> 
+            <strong>Connect Hardware:</strong> Hook up your target jailbroken device via a stable USB cable. Ensure the machine detects the active connection.
+        </li>
+        <li class="step-item">
+            <span class="step-number">4</span> 
+            <strong>Execute Bypass:</strong> Run the automated deployment payload script to rename the runtime environment targets:
+            <pre><code>./run_bypass.sh</code></pre>
+        </li>
+        <li class="step-item">
+            <span class="step-number">5</span> 
+            <strong>Final Verification:</strong> The script will automatically trigger a clean hardware reboot. Upon boot, the software will output: <br>
+            <code>[+] Bypass & iCloud Bypass Successfully!</code>
+        </li>
+    </ul>
+
+    <footer>
+        <p>&copy; 2026 RetroHackLab. Released under the MIT License.</p>
+    </footer>
+</div>
+
+</body>
+</html>
