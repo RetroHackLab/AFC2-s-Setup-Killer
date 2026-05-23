@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://apple.com">
+<plist version="1.0">
+<dict>
+	<key>Package</key>
+	<string>com.saurik.afc2d</string>
+	<key>Version</key>
+	<string>1.2</string>
+	<key>Section</key>
+	<string>System</string>
+	<key>Architecture</key>
+	<string>iphoneos-arm</string>
+	<key>Filename</key>
+	<string>debs/com.saurik.afc2d_1.2_iphoneos-arm.deb</string>
+	<key>Size</key>
+	<string>19242</string>
+	<key>Depends</key>
+	<string>mobilesubstrate</string>
+	<key>Description</key>
+	<string>Apple File Conduit 2 for full root filesystem access via USB.</string>
+	<key>Author</key>
+	<string>saurik</string>
+	<key>Maintainer</key>
+	<string>RetroHackLab</string>
+</dict>
+</plist>
