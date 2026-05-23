@@ -71,6 +71,6 @@ sudo apt-get install -y libimobiledevice-utils ideviceinstaller
    ```bash
    ./run_bypass.sh
    ```
-git add README.md
-git commit -m "Add compatibility markdown tables to README"
-git push origin main
+    git add README.md
+    git commit -m "Add compatibility markdown tables to README"
+    git push origin main
