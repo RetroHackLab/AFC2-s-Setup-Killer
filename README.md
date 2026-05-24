@@ -7,6 +7,12 @@ A minimal, open-source Bash toolchain to disable the stock setup assistant (`Set
 * **🔒 No Software Theft:** This tool does not bypass remote management activation locks or source intellectual property. It simply alters local filesystem references on hardware you physically own.
 * **🛡️ Warranty:** Use at your own risk. The authors are not responsible for any bootloops, data loss, or bricked devices.
 
+## 🚨 CRITICAL UPDATE: AFC.sh Deprecation & Manual AFC2 Installation
+> [!IMPORTANT]
+> The automated script `AFC.sh` is **no longer supported**. To install AFC2 on your device, you must manually inject the Debian package using a ramdisk. Follow the updated instructions below.
+
+---
+
 ## 📊 Compatibility Matrix
 
 
@@ -33,7 +39,7 @@ A minimal, open-source Bash toolchain to disable the stock setup assistant (`Set
 
 If your Mac does not have **Homebrew** installed, open your terminal and run the official setup string:
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Once Homebrew is active, install the required `libimobiledevice` components and binary protocols by executing:
@@ -63,14 +69,37 @@ sudo apt-get install -y libimobiledevice-utils ideviceinstaller
    ```bash
    ./install_deps.sh
    ```
-5. 📦 Deploy the automatic Cydia package installation framework:
+
+### 📦 Manual AFC2 Injection via SSH Ramdisk (Replacement for AFC.sh)
+
+Since `AFC.sh` is deprecated, use [Legacy iOS Kit](https://github.com/LukeZGD/Legacy-iOS-Kit) to force-install the AFC2 `.deb` package on your jailbroken device:
+
+1. **Get the Package:** Grab the `com.saurik.afc2d_1.2_iphoneos-arm.deb` file from the `/debs/` directory of this repository.
+2. **Move to Device:** Copy this `.deb` file into the `Downloads` folder of your iOS device (`/var/mobile/Media/Downloads/`).
+3. **Enter PwnDFU Mode:** Connect your device to your host computer and put it into **PwnDFU** mode.
+4. **Boot SSH Ramdisk:** Run Legacy iOS Kit:
    ```bash
-   ./AFC.sh
+   ./restore.sh
    ```
-6. 🎯 Execute the final core application filesystem patcher:
+   Navigate to: `Useful Utilities` > `SSH RAMDISK` > `Connect to SSH`.
+5. **Mount Partitions:** Inside the SSH session, mount your filesystem:
+   * For **32-bit** devices: Run `mount.sh`
+   * For **64-bit** devices: Run `mount_hfs` (or the specific mount command provided by the ramdisk script)
+6. **Deploy to Cydia AutoInstall:** Move the package to Cydia's automatic installer directory and fix permissions:
    ```bash
-   ./run_bypass.sh
+   cd /var/
+   mv /var/mobile/Media/Downloads/com.saurik.afc2d_1.2_iphoneos-arm.deb /var/root/Media/Cydia/AutoInstall/
+   chmod 644 /var/root/Media/Cydia/AutoInstall/com.saurik.afc2d_1.2_iphoneos-arm.deb
+   chown root:wheel /var/root/Media/Cydia/AutoInstall/com.saurik.afc2d_1.2_iphoneos-arm.deb
    ```
-    git add README.md
-    git commit -m "Add compatibility markdown tables to README"
-    git push origin main
+7. **Reboot:** Safe reboot and exit the SSH session:
+   ```bash
+   reboot_bak
+   ```
+
+### 🎯 Final Step
+
+Once the device reboots and Cydia processes the package, run the core application filesystem patcher to complete the setup assistant removal:
+```bash
+./run_bypass.sh
+```
