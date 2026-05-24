@@ -87,10 +87,10 @@ Since `AFC.sh` is deprecated, use [Legacy iOS Kit](https://github.com/LukeZGD/Le
    * For **64-bit** devices: Run `mount_hfs` (or the specific mount command provided by the ramdisk script)
 6. **Deploy to Cydia AutoInstall:** Move the package to Cydia's automatic installer directory and fix permissions:
    ```bash
-   cd /var/
-   mv /var/mobile/Media/Downloads/com.saurik.afc2d_1.2_iphoneos-arm.deb /var/root/Media/Cydia/AutoInstall/
-   chmod 644 /var/root/Media/Cydia/AutoInstall/com.saurik.afc2d_1.2_iphoneos-arm.deb
-   chown root:wheel /var/root/Media/Cydia/AutoInstall/com.saurik.afc2d_1.2_iphoneos-arm.deb
+   cd /mnt2/
+   mv /mnt2/mobile/Media/Downloads/com.saurik.afc2d_1.2_iphoneos-arm.deb /var/root/Media/Cydia/AutoInstall/
+   chmod 644 /mnt2/root/Media/Cydia/AutoInstall/com.saurik.afc2d_1.2_iphoneos-arm.deb
+   chown root:wheel /mnt2/root/Media/Cydia/AutoInstall/com.saurik.afc2d_1.2_iphoneos-arm.deb
    ```
 7. **Reboot:** Safe reboot and exit the SSH session:
    ```bash
